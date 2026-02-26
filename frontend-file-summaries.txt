@@ -1,0 +1,18 @@
+{
+  "frontend/src/index.css": "Global styles with warm earthy OKLCH color tokens (cream background, terracotta primary, amber accents), imports Crimson Text, Caveat, and Lato fonts from Google Fonts, and sets up font utility classes.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with custom font families (serif, handwritten, body), scrapbook-style box shadows, and a fade-in animation alongside the standard design token mappings.",
+  "frontend/src/hooks/useQueries.ts": "All React Query hooks including new chat hooks: `useGetMessages` (with 3s polling), `useSendMessage`, `useDeleteMessage` mutations, and `useGetDisplayName` for resolving member display names.",
+  "frontend/src/components/LoginButton.tsx": "Reusable login/logout button using Internet Identity with loading state, configurable variant/size props, and query cache clearing on logout.",
+  "frontend/src/components/ProfileSetupModal.tsx": "First-login modal that prompts new users to enter their display name, using the saveCallerUserProfile mutation with validation and loading state.",
+  "frontend/src/components/LandingPage.tsx": "Landing page fully rebranded to \"Heavenuse\" with updated hero text, feature cards highlighting group chat and media sharing, and updated footer.",
+  "frontend/src/components/Layout.tsx": "Authenticated app shell renamed to \"Heavenuse\" with a Chat nav item that links to the first available group's chat, updated footer branding.",
+  "frontend/src/components/MemoryCard.tsx": "Scrapbook-styled card displaying a single memory post with image, handwritten title, description, author name (resolved via profile query), and formatted date.",
+  "frontend/src/components/CreateMemoryModal.tsx": "Dialog form for creating a new memory post with title (required), description, image URL fields, live image preview, and validation.",
+  "frontend/src/components/GroupSelector.tsx": "Dropdown select component for switching between family groups, auto-populated from the getAllFamilyGroups query.",
+  "frontend/src/pages/FeedPage.tsx": "Main memory feed page with group selector, \"Add Memory\" button, responsive masonry-style grid of MemoryCards, skeleton loading states, and empty states.",
+  "frontend/src/pages/FamilyGroupPage.tsx": "Family group management page updated with tabbed Members/Gallery layout per group card, \"Open Chat\" button navigating to the chat route, and MemberDisplayName component resolving display names via useGetDisplayName.",
+  "frontend/src/App.tsx": "Root app component with TanStack Router setup including the new `/chat/$groupId` route for GroupChatPage, authentication gate, profile setup modal, and loading screen branded as \"Heavenuse\".",
+  "frontend/index.html": "HTML entry point with updated page title changed from \"Family Memories\" to \"Heavenuse\".",
+  "frontend/src/pages/GroupChatPage.tsx": "Full-featured WhatsApp-style group chat page with scrollable message thread, sender display names, right/left aligned bubbles for own/others messages, inline image/video rendering, message deletion, and a compose form supporting text + media URL with type selector.",
+  "frontend/src/components/MediaGallery.tsx": "Responsive grid gallery component that filters and displays all image/video messages for a group, showing sender name, date, and optional caption beneath each media item."
+}

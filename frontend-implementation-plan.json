@@ -1,0 +1,121 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add group chat, photo/video sharing, and member names (Heavenuse)",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Rename the app to 'Heavenuse' across all user-facing text, page titles, HTML title tag, landing page hero, and app header",
+      "acceptanceCriteria": [
+        "The browser tab title reads 'Heavenuse'",
+        "The landing page hero and app header display 'Heavenuse'",
+        "No references to 'Family Memories' remain in visible UI text"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the HTML <title> tag from 'Family Memories' to 'Heavenuse'"
+        },
+        {
+          "path": "frontend/src/components/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Replace 'Family Memories' with 'Heavenuse' in the hero banner heading and any other visible text references"
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Replace 'Family Memories' with 'Heavenuse' in the app header/navigation bar"
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Build a Group Chat page accessible from main navigation displaying a scrollable message thread with sender display names, message text, attached photos/videos, and timestamps; allow members to type and send messages with optional media URLs; distinguish current user's messages with right-aligned bubbles; restrict access to authenticated group members only",
+      "acceptanceCriteria": [
+        "The chat thread loads messages for the active family group in reverse-chronological order (newest at bottom)",
+        "Each message bubble displays the sender's display name, message text (if any), timestamp, and inline media (image or video)",
+        "The current user's messages appear on the right; others on the left",
+        "Submitting a message with text and/or a media URL calls sendMessage and appends it to the thread",
+        "Unauthenticated users are redirected to the landing page",
+        "Users who are not members of the group cannot view or send messages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks: useGetMessages(groupId, limit, beforeTimestamp) for fetching messages with polling (refetchInterval), useSendMessage() mutation for sending messages, and useDeleteMessage() mutation for deleting messages. Configure polling interval (e.g., 3000ms) to simulate live updates. Invalidate 'messages' query key after successful mutations."
+        },
+        {
+          "path": "frontend/src/pages/GroupChatPage.tsx",
+          "operation": "create",
+          "description": "Create the Group Chat page component that: (1) uses useInternetIdentity to verify authentication and redirects to landing if not authenticated, (2) retrieves the selected groupId from URL params or state, (3) calls useGetMessages with polling enabled to display the message thread in a scrollable container, (4) renders each message as a bubble showing sender display name, text, timestamp, and inline media (img for images, HTML5 video element for videos), (5) visually distinguishes current user's messages (right-aligned, different background) using identity.getPrincipal(), (6) provides a message input form with fields for text and optional mediaUrl, plus a dropdown to select mediaType ('none', 'image', 'video'), (7) calls useSendMessage mutation on submit, (8) verifies group membership by comparing identity principal with group member list (fetch via useGetFamilyGroupDetails if needed), (9) shows access denied message if user is not a member. Use Tailwind for styling chat bubbles and layout."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the new GroupChatPage route (e.g., '/chat/:groupId') in the TanStack Router configuration and add a 'Chat' navigation link in the authenticated app shell that navigates to the chat page for the currently selected group."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add a 'Chat' navigation item to both desktop and mobile navigation menus that links to '/chat/:groupId' (use the currently selected group from context or URL state). Ensure the link is only visible to authenticated users."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add a photo and video gallery tab or section within each family group view that aggregates all media messages (images and videos) shared in that group, displaying them in a grid layout with sender's name and timestamp beneath each item",
+      "acceptanceCriteria": [
+        "The gallery shows all messages of type 'image' or 'video' for the selected group",
+        "Each grid item renders the photo or a video thumbnail/player",
+        "Sender display name and formatted timestamp are shown beneath each media item",
+        "The gallery is accessible as a tab or section within the group view"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MediaGallery.tsx",
+          "operation": "create",
+          "description": "Create a MediaGallery component that: (1) accepts a groupId prop, (2) calls useGetMessages(groupId, large_limit, null) to fetch all messages, (3) filters messages where mediaType is 'image' or 'video', (4) renders a responsive grid (Tailwind grid with gap) of media items, (5) for each item, displays the image (img tag) or video (HTML5 video element with controls), (6) shows the sender's display name (from message.displayName) and formatted timestamp below each media item. Use card-style layout for each grid cell."
+        },
+        {
+          "path": "frontend/src/pages/FamilyGroupPage.tsx",
+          "operation": "modify",
+          "description": "Add a tab or section toggle (e.g., 'Members' vs 'Gallery') within the FamilyGroupPage layout. When 'Gallery' is selected, render the MediaGallery component for the current group. Ensure the tab UI uses Tailwind for styling and accessibility."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Display all group members' display names prominently on the Family Group page and in the chat header; show sender's display name in each chat message bubble; list each member's display name alongside their principal ID on the group management page",
+      "acceptanceCriteria": [
+        "The Family Group page lists every member with their display name",
+        "The chat page header shows the group name and member count",
+        "Every chat message bubble includes the sender's display name",
+        "If a display name is unavailable, the truncated principal ID is shown as fallback"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a useGetDisplayName(principal: Principal) query hook that calls backend.getDisplayName(principal) to fetch a user's display name. Enable caching and configure stale time appropriately."
+        },
+        {
+          "path": "frontend/src/pages/FamilyGroupPage.tsx",
+          "operation": "modify",
+          "description": "When listing group members, call useGetDisplayName for each member principal and display the returned display name next to the principal ID. If the display name is unavailable, show a truncated version of the principal ID as fallback. Ensure member names are prominently displayed in the member list section."
+        },
+        {
+          "path": "frontend/src/pages/GroupChatPage.tsx",
+          "operation": "modify",
+          "description": "In the chat page header, display the group name and member count (fetch via useGetFamilyGroupDetails). In each message bubble, display message.displayName as the sender's name (this is already included in the Message type from the backend). If displayName is empty or missing, fall back to a truncated principal ID."
+        },
+        {
+          "path": "frontend/src/components/MediaGallery.tsx",
+          "operation": "modify",
+          "description": "Ensure each media grid item displays the sender's display name (message.displayName) beneath the media. If displayName is unavailable, show a truncated version of the sender principal ID as fallback."
+        }
+      ]
+    }
+  ]
+}

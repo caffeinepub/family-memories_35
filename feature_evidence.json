@@ -1,0 +1,90 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-rename-the-app-to-heavenuse-across-all-user-facing-text-page-titles-the-html-title-tag-the-landing-page-hero-and-the-app-header",
+      "featureTitle": "Rename the app to 'Heavenuse' across all user-facing text, page titles, the HTML title tag, the landing page hero, and the app header.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/LandingPage.tsx",
+        "frontend/src/components/Layout.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-group-chat-page-accessible-from-the-main-navigation-for-a-selected-family-group-it-must-display-a-scrollable-message-thread-where-each-message-shows-the-sender-s-display-name-the-message-text-any-attached-photo-rendered-as-an-image-or-video-rendered-with-an-html5-video-player-and-the-timestamp-members-can-type-a-message-attach-a-photo-or-video-via-url-input-and-send-it-the-current-user-s-messages-should-be-visually-distinguished-right-aligned-bubble-non-members-and-unauthenticated-users-cannot-access-the-chat",
+      "featureTitle": "Build a Group Chat page accessible from the main navigation. For a selected family group it must display a scrollable message thread where each message shows: the sender's display name, the message text, any attached photo (rendered as an image) or video (rendered with an HTML5 video player), and the timestamp. Members can type a message, attach a photo or video via URL input, and send it. The current user's messages should be visually distinguished (right-aligned bubble). Non-members and unauthenticated users cannot access the chat.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/GroupChatPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-photo-and-video-gallery-tab-or-section-within-each-family-group-view-that-aggregates-all-media-messages-images-and-videos-shared-in-that-group-displaying-them-in-a-grid-layout-with-the-sender-s-name-and-timestamp-beneath-each-item",
+      "featureTitle": "Add a photo and video gallery tab or section within each family group view that aggregates all media messages (images and videos) shared in that group, displaying them in a grid layout with the sender's name and timestamp beneath each item.",
+      "files": [
+        "frontend/src/components/MediaGallery.tsx",
+        "frontend/src/pages/FamilyGroupPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-all-group-members-display-names-prominently-on-the-family-group-page-and-in-the-chat-header-in-the-chat-thread-each-message-must-show-the-sender-s-display-name-on-the-group-management-page-list-each-member-s-display-name-alongside-their-principal-id",
+      "featureTitle": "Display all group members' display names prominently on the Family Group page and in the chat header. In the chat thread, each message must show the sender's display name. On the group management page, list each member's display name alongside their principal ID.",
+      "files": [
+        "frontend/src/components/MediaGallery.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/FamilyGroupPage.tsx",
+        "frontend/src/pages/GroupChatPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

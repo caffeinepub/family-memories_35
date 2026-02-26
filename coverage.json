@@ -1,0 +1,109 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T15:12:34.592Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Build a Group Chat page accessible from the main navigation. For a selected family group it must display a scrollable message thread where each message shows: the sender's display name, the message text, any attached photo (rendered as an image) or video (rendered with an HTML5 video player), and the timestamp. Members can type a message, attach a photo or video via URL input, and send it. The current user's messages should be visually distinguished (right-aligned bubble). Non-members and unauthenticated users cannot access the chat.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/GroupChatPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/GroupChatPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Add a photo and video gallery tab or section within each family group view that aggregates all media messages (images and videos) shared in that group, displaying them in a grid layout with the sender's name and timestamp beneath each item.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/MediaGallery.tsx",
+          "frontend/src/pages/FamilyGroupPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/MediaGallery.tsx",
+          "frontend/src/pages/FamilyGroupPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Display all group members' display names prominently on the Family Group page and in the chat header. In the chat thread, each message must show the sender's display name. On the group management page, list each member's display name alongside their principal ID.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/FamilyGroupPage.tsx",
+          "frontend/src/pages/GroupChatPage.tsx",
+          "frontend/src/components/MediaGallery.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/FamilyGroupPage.tsx",
+          "frontend/src/pages/GroupChatPage.tsx",
+          "frontend/src/components/MediaGallery.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Rename the app to 'Heavenuse' across all user-facing text, page titles, the HTML title tag, the landing page hero, and the app header.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html",
+          "frontend/src/components/LandingPage.tsx",
+          "frontend/src/components/Layout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/index.html",
+          "frontend/src/components/LandingPage.tsx",
+          "frontend/src/components/Layout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add a backend data model and API for group chat messages. Each message must store: a unique ID, the family group ID it belongs to, the sender's principal, the sender's display name, message text (optional), an optional media URL (photo or video), media type ('image' | 'video' | 'none'), and a timestamp. Expose functions: sendMessage(groupId, text, mediaUrl, mediaType) → Message, getMessages(groupId, limit, beforeTimestamp) → [Message], and deleteMessage(messageId) (owner or group owner only).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/LandingPage.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/MediaGallery.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/FamilyGroupPage.tsx",
+    "frontend/src/pages/GroupChatPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

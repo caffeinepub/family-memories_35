@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Warm cream background */
+    --background: 0.97 0.018 85;
+    --foreground: 0.22 0.04 55;
+
+    /* Card: slightly warmer cream */
+    --card: 0.99 0.012 80;
+    --card-foreground: 0.22 0.04 55;
+
+    /* Popover */
+    --popover: 0.99 0.012 80;
+    --popover-foreground: 0.22 0.04 55;
+
+    /* Primary: warm terracotta */
+    --primary: 0.52 0.13 38;
+    --primary-foreground: 0.98 0.01 80;
+
+    /* Secondary: soft amber */
+    --secondary: 0.92 0.06 75;
+    --secondary-foreground: 0.32 0.06 45;
+
+    /* Muted: warm beige */
+    --muted: 0.93 0.025 80;
+    --muted-foreground: 0.52 0.04 55;
+
+    /* Accent: golden amber */
+    --accent: 0.82 0.1 72;
+    --accent-foreground: 0.25 0.05 45;
+
+    /* Destructive */
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0.01 80;
+
+    /* Border: warm tan */
+    --border: 0.86 0.04 72;
+    --input: 0.88 0.04 72;
+    --ring: 0.52 0.13 38;
+
+    /* Charts */
+    --chart-1: 0.65 0.15 42;
+    --chart-2: 0.72 0.12 68;
+    --chart-3: 0.58 0.1 200;
+    --chart-4: 0.80 0.14 80;
+    --chart-5: 0.48 0.12 30;
+
+    /* Sidebar */
+    --sidebar: 0.95 0.022 78;
+    --sidebar-foreground: 0.22 0.04 55;
+    --sidebar-primary: 0.52 0.13 38;
+    --sidebar-primary-foreground: 0.98 0.01 80;
+    --sidebar-accent: 0.90 0.05 72;
+    --sidebar-accent-foreground: 0.32 0.06 45;
+    --sidebar-border: 0.86 0.04 72;
+    --sidebar-ring: 0.52 0.13 38;
+  }
+
+  .dark {
+    --background: 0.18 0.03 45;
+    --foreground: 0.93 0.02 78;
+
+    --card: 0.22 0.035 45;
+    --card-foreground: 0.93 0.02 78;
+
+    --popover: 0.25 0.035 45;
+    --popover-foreground: 0.93 0.02 78;
+
+    --primary: 0.72 0.12 55;
+    --primary-foreground: 0.18 0.03 45;
+
+    --secondary: 0.28 0.04 45;
+    --secondary-foreground: 0.90 0.02 78;
+
+    --muted: 0.28 0.04 45;
+    --muted-foreground: 0.65 0.04 60;
+
+    --accent: 0.35 0.06 50;
+    --accent-foreground: 0.90 0.02 78;
+
+    --destructive: 0.60 0.20 25;
+    --destructive-foreground: 0.93 0.02 78;
+
+    --border: 1 0 0 / 12%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.65 0.10 55;
+
+    --sidebar: 0.22 0.035 45;
+    --sidebar-foreground: 0.93 0.02 78;
+    --sidebar-primary: 0.72 0.12 55;
+    --sidebar-primary-foreground: 0.18 0.03 45;
+    --sidebar-accent: 0.28 0.04 45;
+    --sidebar-accent-foreground: 0.90 0.02 78;
+    --sidebar-border: 1 0 0 / 12%;
+    --sidebar-ring: 0.65 0.10 55;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}

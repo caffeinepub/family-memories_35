@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "A family communication app called 'Heavenuse' where family members can share photos, videos, and chat with each other in group chats — similar to WhatsApp. Each member's name is displayed.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-authentication-so-users-must-log-in-before-creating-or-viewing-family-memories",
+      "title": "Implement Internet Identity authentication so users must log in before creating or viewing family memories.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-memory-feed-page-that-displays-all-memory-posts-for-the-user-s-family-group-in-reverse-chronological-order-showing-the-title-description-image-author-name-and-timestamp-for-each-post",
+      "title": "Build a memory feed page that displays all memory posts for the user's family group in reverse chronological order, showing the title, description, image, author name, and timestamp for each post.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-form-for-creating-a-new-memory-post-allowing-the-user-to-enter-a-title-description-and-provide-an-image-url-then-submit-it-to-the-backend",
+      "title": "Build a form for creating a new memory post, allowing the user to enter a title, description, and provide an image URL, then submit it to the backend.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-family-group-management-page-where-users-can-create-a-new-family-group-view-current-members-and-invite-new-members-by-entering-their-principal-id",
+      "title": "Build a family group management page where users can create a new family group, view current members, and invite new members by entering their principal ID.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-warm-nostalgic-visual-theme-throughout-the-app-using-soft-earthy-tones-cream-warm-amber-muted-terracotta-handwritten-style-or-serif-typography-and-a-scrapbook-inspired-card-layout-enforce-this-aesthetic-consistently-across-all-pages",
+      "title": "Apply a warm, nostalgic visual theme throughout the app — using soft earthy tones (cream, warm amber, muted terracotta), handwritten-style or serif typography, and a scrapbook-inspired card layout. Enforce this aesthetic consistently across all pages.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-rename-the-app-to-heavenuse-across-all-user-facing-text-page-titles-the-html-title-tag-the-landing-page-hero-and-the-app-header",
+      "title": "Rename the app to 'Heavenuse' across all user-facing text, page titles, the HTML title tag, the landing page hero, and the app header.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-group-chat-page-accessible-from-the-main-navigation-for-a-selected-family-group-it-must-display-a-scrollable-message-thread-where-each-message-shows-the-sender-s-display-name-the-message-text-any-attached-photo-rendered-as-an-image-or-video-rendered-with-an-html5-video-player-and-the-timestamp-members-can-type-a-message-attach-a-photo-or-video-via-url-input-and-send-it-the-current-user-s-messages-should-be-visually-distinguished-right-aligned-bubble-non-members-and-unauthenticated-users-cannot-access-the-chat",
+      "title": "Build a Group Chat page accessible from the main navigation. For a selected family group it must display a scrollable message thread where each message shows: the sender's display name, the message text, any attached photo (rendered as an image) or video (rendered with an HTML5 video player), and the timestamp. Members can type a message, attach a photo or video via URL input, and send it. The current user's messages should be visually distinguished (right-aligned bubble). Non-members and unauthenticated users cannot access the chat.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-photo-and-video-gallery-tab-or-section-within-each-family-group-view-that-aggregates-all-media-messages-images-and-videos-shared-in-that-group-displaying-them-in-a-grid-layout-with-the-sender-s-name-and-timestamp-beneath-each-item",
+      "title": "Add a photo and video gallery tab or section within each family group view that aggregates all media messages (images and videos) shared in that group, displaying them in a grid layout with the sender's name and timestamp beneath each item.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-all-group-members-display-names-prominently-on-the-family-group-page-and-in-the-chat-header-in-the-chat-thread-each-message-must-show-the-sender-s-display-name-on-the-group-management-page-list-each-member-s-display-name-alongside-their-principal-id",
+      "title": "Display all group members' display names prominently on the Family Group page and in the chat header. In the chat thread, each message must show the sender's display name. On the group management page, list each member's display name alongside their principal ID.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Upload and share family photos and videos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Create and view family memory stories or posts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Family group management (invite and manage family members)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Create a backend data model and API to store family memory posts, including title, description, image URL, author, timestamp, and associated family group ID.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create a backend data model and API to manage family groups, including creating a group, adding/removing members by principal, and fetching group membership.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Real-time group chat functionality (like WhatsApp) where family members can send and receive messages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Video sharing within family group chats",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Display member names in chats and group views",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Add a backend data model and API for group chat messages. Each message must store: a unique ID, the family group ID it belongs to, the sender's principal, the sender's display name, message text (optional), an optional media URL (photo or video), media type ('image' | 'video' | 'none'), and a timestamp. Expose functions: sendMessage(groupId, text, mediaUrl, mediaType) → Message, getMessages(groupId, limit, beforeTimestamp) → [Message], and deleteMessage(messageId) (owner or group owner only).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Family Memories",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

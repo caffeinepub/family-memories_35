@@ -1,0 +1,124 @@
+{
+  "kind": "build_request",
+  "title": "Add group chat, photo/video sharing, and member names (Heavenuse)",
+  "projectName": "Heavenuse",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Rename the app to 'Heavenuse' across all user-facing text, page titles, the HTML title tag, the landing page hero, and the app header.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "app ka naam Rahega heavenuse"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The browser tab title reads 'Heavenuse'",
+        "The landing page hero and app header display 'Heavenuse'",
+        "No references to 'Family Memories' remain in visible UI text"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a backend data model and API for group chat messages. Each message must store: a unique ID, the family group ID it belongs to, the sender's principal, the sender's display name, message text (optional), an optional media URL (photo or video), media type ('image' | 'video' | 'none'), and a timestamp. Expose functions: sendMessage(groupId, text, mediaUrl, mediaType) → Message, getMessages(groupId, limit, beforeTimestamp) → [Message], and deleteMessage(messageId) (owner or group owner only).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "videos photos aur chats bhi kar sakte hain",
+          "like WhatsApp group chat"
+        ]
+      },
+      "acceptanceCriteria": [
+        "sendMessage stores a message record associated with the correct group and authenticated caller",
+        "getMessages returns messages in reverse-chronological order for the given group, respecting limit and pagination cursor",
+        "deleteMessage rejects callers who are neither the message author nor the group owner",
+        "Message records include sender display name resolved from the user profile at send time"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Build a Group Chat page accessible from the main navigation. For a selected family group it must display a scrollable message thread where each message shows: the sender's display name, the message text, any attached photo (rendered as an image) or video (rendered with an HTML5 video player), and the timestamp. Members can type a message, attach a photo or video via URL input, and send it. The current user's messages should be visually distinguished (right-aligned bubble). Non-members and unauthenticated users cannot access the chat.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "like WhatsApp group chat",
+          "videos photos aur chats bhi kar sakte hain",
+          "usmein sab ka naam bhi rahega"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The chat thread loads messages for the active family group in reverse-chronological order (newest at bottom)",
+        "Each message bubble displays the sender's display name, message text (if any), timestamp, and inline media (image or video)",
+        "The current user's messages appear on the right; others on the left",
+        "Submitting a message with text and/or a media URL calls sendMessage and appends it to the thread",
+        "Unauthenticated users are redirected to the landing page",
+        "Users who are not members of the group cannot view or send messages"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Add a photo and video gallery tab or section within each family group view that aggregates all media messages (images and videos) shared in that group, displaying them in a grid layout with the sender's name and timestamp beneath each item.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "videos photos aur chats bhi kar sakte hain"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The gallery shows all messages of type 'image' or 'video' for the selected group",
+        "Each grid item renders the photo or a video thumbnail/player",
+        "Sender display name and formatted timestamp are shown beneath each media item",
+        "The gallery is accessible as a tab or section within the group view"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Display all group members' display names prominently on the Family Group page and in the chat header. In the chat thread, each message must show the sender's display name. On the group management page, list each member's display name alongside their principal ID.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "usmein sab ka naam bhi rahega"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Family Group page lists every member with their display name",
+        "The chat page header shows the group name and member count",
+        "Every chat message bubble includes the sender's display name",
+        "If a display name is unavailable, the truncated principal ID is shown as fallback"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in the single backend/main.mo actor file",
+    "Immutable frontend paths (hooks, main.tsx, ui components) must not be modified",
+    "Do not implement real-time WebSocket streaming — use periodic polling (React Query refetchInterval) to simulate live chat updates",
+    "Media sharing is URL-based only (no binary file uploads); users provide a URL to a photo or video"
+  ],
+  "nonGoals": [
+    "Binary file upload or on-chain media storage",
+    "Real-time push notifications or WebSocket connections",
+    "End-to-end message encryption",
+    "Direct (one-to-one) messaging outside of family groups",
+    "Message read receipts or typing indicators"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
